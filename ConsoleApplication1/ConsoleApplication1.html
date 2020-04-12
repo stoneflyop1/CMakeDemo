@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Wasm</title>
+</head>
+<body>
+    <script>
+        Module = {};
+        Module.onRuntimeInitialized = function() {
+            console.log("from test, ", Module._Test());
+            var s = Module._Sum_New();
+            console.log(Module._Sum_Inc(s, 29));
+            Module._Sum_Delete(s);
+        }
+    </script>
+    <script src="ConsoleApplication1.js"></script>
+</body>
+</html>
