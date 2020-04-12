@@ -22,4 +22,8 @@ include_directories(
 #     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../include
 # )
 
+if (EMSCRIPTEN) # https://stackoverflow.com/questions/37747205/cmake-project-for-emscripten
+    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-s DEMANGLE_SUPPORT=1 --bind")
+endif()
+
 target_link_libraries(${PROJECT_NAME} TestLib)

@@ -16,6 +16,6 @@ if ($args.count -eq 0) {
     Set-Location $wasm
     $emsdk = $Env:EMSDK
     cmake -GNinja  -DCMAKE_TOOLCHAIN_FILE="$emsdk"\upstream\emscripten\cmake\Modules\Platform\Emscripten.cmake -DCMAKE_BUILD_TYPE=Release ..\
-    cmake --build .
+    cmake --build . --verbose
     Set-Location ..
 }

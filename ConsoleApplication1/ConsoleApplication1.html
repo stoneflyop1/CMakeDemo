@@ -10,9 +10,23 @@
         Module = {};
         Module.onRuntimeInitialized = function() {
             console.log("from test, ", Module._Test());
-            var s = Module._Sum_New();
+            const s = Module._Sum_New();
             console.log(Module._Sum_Inc(s, 29));
             Module._Sum_Delete(s);
+            //embind
+            if (Module.MyClass) {
+                const instance = new Module.MyClass(10, "hello");
+                instance.incrementX();
+                instance.x; // 11
+                console.log(instance.x);
+                instance.x = 20; // 20
+                console.log(instance.x);
+                const str = Module.MyClass.getStringFromInstance(instance); // "hello"
+                console.log(str);
+                instance.delete();
+            } else {
+                console.log("no MyClass found!");
+            }
         }
     </script>
     <script src="ConsoleApplication1.js"></script>

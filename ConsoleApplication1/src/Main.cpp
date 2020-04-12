@@ -4,6 +4,7 @@
 #ifdef __EMSCRIPTEN__
     #include <emscripten.h>
     #include <WasmTest.h>
+    #include <BindTest.h>
 #endif
 
 #include <iostream>
