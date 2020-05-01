@@ -30,6 +30,13 @@ extern "C" {
 #ifdef __EMSCRIPTEN__
     EMSCRIPTEN_KEEPALIVE
 #endif
+int Simple_Sum(int a, int b) {
+	return a + b;
+}
+
+#ifdef __EMSCRIPTEN__
+    EMSCRIPTEN_KEEPALIVE
+#endif
 struct Sum* Sum_New() {
 	CSum *obj = new CSum();
 	return (struct Sum*)obj;
