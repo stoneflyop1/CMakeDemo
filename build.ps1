@@ -1,19 +1,18 @@
-
 if ($args.count -eq 0) {
-    $build = "build"
-    if (-not (Test-Path $build)) {
-        New-Item -ItemType Directory -Force -Path $build
+    $outputDir = "build"
+    if (-not (Test-Path $outputDir)) {
+        New-Item -ItemType Directory -Force -Path $outputDir
     }
-    Set-Location $build
+    Set-Location $outputDir
     cmake ..
     cmake --build .
     Set-Location ..
 } else {
-    $wasm = "wasm"
-    if (-not (Test-Path $wasm)) {
-        New-Item -ItemType Directory -Force -Path $wasm
+    $outputDir = "wasm"
+    if (-not (Test-Path $outputDir)) {
+        New-Item -ItemType Directory -Force -Path $outputDir
     }
-    Set-Location $wasm
+    Set-Location $outputDir
     $emsdk = $Env:EMSDK
     cmake -GNinja  -DCMAKE_TOOLCHAIN_FILE="$emsdk"\upstream\emscripten\cmake\Modules\Platform\Emscripten.cmake -DCMAKE_BUILD_TYPE=Release ..\
     cmake --build . --verbose
